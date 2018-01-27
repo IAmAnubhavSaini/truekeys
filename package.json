@@ -1,0 +1,30 @@
+{
+  "name": "truekeys",
+  "version": "1.0.0",
+  "description": "Find if a bunch of keys in an object are true - node module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitfaf/truekeys.git"
+  },
+  "keywords": [],
+  "author": "Git Faf <git.faf@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gitfaf/truekeys/issues"
+  },
+  "homepage": "https://github.com/gitfaf/truekeys#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jasmine": "^2.9.0"
+  }
+}
