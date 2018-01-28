@@ -1,6 +1,6 @@
 {
   "name": "truekeys",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Find if a bunch of keys in an object are true - node module",
   "main": "src/index.js",
   "scripts": {

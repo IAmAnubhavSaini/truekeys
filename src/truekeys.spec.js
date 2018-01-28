@@ -1,7 +1,7 @@
 /* global describe it */
 
 const expect = require('chai').expect
-const truekeys = require('./index')
+const truekeys = require('./index').truekeys
 
 describe('truekeys', () => {
     const req = {

@@ -20,7 +20,7 @@ Becomes easier and cleaner as shown in `Usage`.
 
 ```javascript
 
-  const truekeys = require('truekeys')
+  const truekeys = require('truekeys').truekeys
 
   const req = {
     body: {
@@ -39,6 +39,51 @@ Becomes easier and cleaner as shown in `Usage`.
   ]
 
   truekeys(req.body, keys) // true
+
+```
+
+If there are many such objects and interesting keys, use `manyTruekeys` function.
+
+```javascript
+
+  const manyTruekeys = require('truekeys').manyTruekeys
+
+  const req = {
+    body: {
+      email: 'email',
+      username: 'username',
+      password: 'password',
+      passwordConf: 'passwordConf'
+    },
+    headers: {
+      safety: 'on'
+    },
+    attempt: 'success'
+  }
+
+  const array = [{
+    obj: req,
+    keys: [
+      'attempt'
+    ]
+  },
+  {
+    obj: req.body,
+    keys: [
+      'email',
+      'username',
+      'password',
+      'passwordConf'
+    ]
+  },
+  {
+    obj: req.headers,
+    keys: [
+      'safety'
+    ]
+  }]
+
+  manyTruekeys(array) // true
 
 ```
 
