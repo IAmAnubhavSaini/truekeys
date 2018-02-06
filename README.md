@@ -20,7 +20,7 @@ Becomes easier and cleaner as shown in `Usage`.
 
 ```javascript
 
-  const truekeys = require('truekeys').truekeys
+  const { truekeys } = require('truekeys')
 
   const req = {
     body: {
@@ -46,7 +46,7 @@ If there are many such objects and interesting keys, use `manyTruekeys` function
 
 ```javascript
 
-  const manyTruekeys = require('truekeys').manyTruekeys
+  const { manyTruekeys } = require('truekeys')
 
   const req = {
     body: {
