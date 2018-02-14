@@ -2,6 +2,11 @@
 
 Find if a bunch of keys in an object are true - node module
 
+## Utilizes Constraints Based Programming
+
+[CBP](https://github.com/gitfaf/cbp)
+
+
 ## Use case
 
 Removes following hideous issue:
