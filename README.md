@@ -6,7 +6,6 @@ Find if a bunch of keys in an object are true - node module
 
 [CBP](https://github.com/gitfaf/cbp)
 
-
 ## Use case
 
 Removes following hideous issue:
@@ -89,6 +88,24 @@ If there are many such objects and interesting keys, use `manyTruekeys` function
   }]
 
   manyTruekeys(array) // true
+
+```
+
+## Figuring out if deep keys
+
+### Singlekey
+
+```javascript
+
+  const singleDeep = require('truekeys').singleDeep
+
+  var obj = { items: [ { issue: [ 1, 2, 3] }, { issue: [2, 3, 4] } ] }
+
+  singleDeep(obj, ['items', '0', 'issues', 'length' ])
+  // false
+
+  singleDeep(obj, ['items', '0', 'issue', 'length' ])
+  // true
 
 ```
 

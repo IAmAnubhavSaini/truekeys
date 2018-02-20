@@ -6,7 +6,10 @@ truekeys.constraints = (obj, keys) => typeof obj === 'object' && Array.isArray(k
 const manyTruekeys = array => manyTruekeys.constraints(array) && !!array.reduce((accumulator, current) => accumulator && truekeys(current.obj, current.keys), true)
 manyTruekeys.constraints = (array) => Array.isArray(array) && array.length > 0
 
+const singleDeep = (obj, keys) => !!keys.reduce((accumulator, current) => accumulator && accumulator[current] ? accumulator[current] : false, obj)
+
 module.exports = {
     truekeys,
-    manyTruekeys
+    manyTruekeys,
+    singleDeep
 }
