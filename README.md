@@ -1,5 +1,8 @@
 # truekeys
 
+UPDATE: This whole module can be replaced with a couple of `?.` stringed together.
+
+
 Find if a bunch of keys in an object are true - node module
 
 ## Utilizes Constraints Based Programming
