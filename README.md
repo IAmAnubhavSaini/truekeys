@@ -91,6 +91,24 @@ If there are many such objects and interesting keys, use `manyTruekeys` function
 
 ```
 
+## Figuring out if deep keys
+
+### Singlekey
+
+```javascript
+
+  const singleDeep = require('truekeys').singleDeep
+
+  var obj = { items: [ { issue: [ 1, 2, 3] }, { issue: [2, 3, 4] } ] }
+
+  singleDeep(obj, ['items', '0', 'issues', 'length' ])
+  // false
+
+  singleDeep(obj, ['items', '0', 'issue', 'length' ])
+  // true
+
+```
+
 ## License
 
 MIT &copy; 2018 Git Faf
