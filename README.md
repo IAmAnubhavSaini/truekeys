@@ -6,10 +6,9 @@ Find if a bunch of keys in an object are true - node module
 
 [CBP](https://github.com/gitfaf/cbp)
 
-
 ## Use case
 
-Removes following hideous issue:
+This is common in javascript code:
 
 ```javascript
 
@@ -25,7 +24,7 @@ Becomes easier and cleaner as shown in `Usage`.
 
 ```javascript
 
-  const { truekeys } = require('truekeys')
+  const { truekeys:has } = require('truekeys')
 
   const req = {
     body: {
@@ -36,14 +35,14 @@ Becomes easier and cleaner as shown in `Usage`.
     }
   }
 
-  const keys = [
+  const passwordConf = [
     'email',
     'username',
     'password',
     'passwordConf'
   ]
 
-  truekeys(req.body, keys) // true
+  has(req.body, hasPasswordConf) // true
 
 ```
 
