@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.hasNestedTruthyKeys = exports.hasTruthyKeysMultiple = exports.hasTruthyKeys = void 0;
 /***
  * Accepts an object and a string key,
  * if key exists in the object,
@@ -9,9 +6,10 @@ exports.hasNestedTruthyKeys = exports.hasTruthyKeysMultiple = exports.hasTruthyK
  * @param obj
  * @param key
  */
-function isTruthyKeyValue(obj, key) {
+function isTruthyKeyValue(obj: any, key: string) {
     return !!obj[key];
 }
+
 /***
  *
  * @param obj target of the keys
@@ -25,16 +23,15 @@ function isTruthyKeyValue(obj, key) {
  * obj: req : {body: { email: {isActive} }, headers: {} }, keys: ['body', 'isActive']
  * false, because req.body exists but req.isActive doesn't
  */
-function hasTruthyKeys(obj, keys) {
-    var validInput = hasTruthyKeys.constraints(obj, keys);
+function hasTruthyKeys(obj: any, keys: string[]): boolean {
+    const validInput = hasTruthyKeys.constraints(obj, keys);
     if (validInput) {
-        return keys.reduce(function (a, c) { return a && isTruthyKeyValue(obj, c); }, true);
-    }
-    else {
+        return keys.reduce((a: boolean, c: string) => a && isTruthyKeyValue(obj, c), true);
+    } else {
         return false;
     }
 }
-exports.hasTruthyKeys = hasTruthyKeys;
+
 /***
  * Constraints based developments,
  *  input values are check before they can be used in function.
@@ -42,7 +39,14 @@ exports.hasTruthyKeys = hasTruthyKeys;
  * @param keys
  *
  */
-hasTruthyKeys.constraints = function (obj, keys) { return typeof obj === 'object' && Array.isArray(keys) && keys.length > 0; };
+hasTruthyKeys.constraints = (obj: any, keys: string[]): boolean => typeof obj === 'object' && Array.isArray(keys) && keys.length > 0;
+
+
+type MatchPairT = {
+    obj: any,
+    keys: string[]
+}
+
 /***
  * It is like hasTruthyKeys, but accepts array of {obj, keys}
  *
@@ -50,17 +54,17 @@ hasTruthyKeys.constraints = function (obj, keys) { return typeof obj === 'object
  *
  * Check tests for sample cases.
  */
-function hasTruthyKeysMultiple(matchPairs) {
-    var validInput = hasTruthyKeysMultiple.constraints(matchPairs);
+function hasTruthyKeysMultiple(matchPairs: MatchPairT[]): boolean {
+    const validInput = hasTruthyKeysMultiple.constraints(matchPairs);
     if (validInput) {
-        return matchPairs.reduce(function (a, c) { return a && hasTruthyKeys(c.obj, c.keys); }, true);
-    }
-    else {
+        return matchPairs.reduce((a: boolean, c: MatchPairT) => a && hasTruthyKeys(c.obj, c.keys), true);
+    } else {
         return false;
     }
 }
-exports.hasTruthyKeysMultiple = hasTruthyKeysMultiple;
-hasTruthyKeysMultiple.constraints = function (array) { return Array.isArray(array) && array.length > 0; };
+
+hasTruthyKeysMultiple.constraints = (array: any[]): boolean => Array.isArray(array) && array.length > 0;
+
 /***
  *
  * @param obj
@@ -69,8 +73,12 @@ hasTruthyKeysMultiple.constraints = function (array) { return Array.isArray(arra
  * Example:
  * obj = req { body: {email: ... } }, keys: ['body', 'email'] will return true since req.body.email exists
  */
-function hasNestedTruthyKeys(obj, keys) {
-    return !!keys.reduce(function (a, c) { return a && a[c] ? a[c] : false; }, obj);
+function hasNestedTruthyKeys(obj: object, keys: string[]): boolean {
+    return !!keys.reduce((a: any, c: any) => a && a[c] ? a[c] : false, obj);
 }
-exports.hasNestedTruthyKeys = hasNestedTruthyKeys;
-//# sourceMappingURL=index.js.map
+
+export {
+    hasTruthyKeys,
+    hasTruthyKeysMultiple,
+    hasNestedTruthyKeys
+};
